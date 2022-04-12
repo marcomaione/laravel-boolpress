@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Posts from './pages/Posts';
 
 const router = new VueRouter({
 
@@ -26,7 +27,12 @@ const router = new VueRouter({
             path:'/contatti',
             name:'contact',
             component:Contact
-        }
+        },
+        {
+            path:'/posts',
+            name:'posts',
+            component:Posts
+        },
     ]
 
 });
