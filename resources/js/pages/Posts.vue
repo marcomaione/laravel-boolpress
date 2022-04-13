@@ -4,13 +4,14 @@
     <h1>  Elenco dei post</h1>
     <div class="row">
         <div class="col-6" v-for="post in posts" :key="post.id">
-            <div class="card justify-content-center">
-                <div class="card-body">
-                    <h5 class="card-title">{{post.title}}</h5>
-                    <p class="card-text">{{post.content}}</p>
-                    <router-link class="btn btn-primary" :to="{name:'single-post', params:{slug:post.slug}}">Vedi articolo completo</router-link>
-                </div>
-            </div>
+            <Post
+                :title="post.title"
+                :content="post.content"
+                :slug="post.slug"
+                :category="post.category"
+                :tags="post.tags"
+            />
+            
         </div>
     </div>
     <nav aria-label="Page navigation example ">
@@ -24,13 +25,18 @@
 </template>
 
 <script>
+import Post from '..//components/Post.vue';
 export default {
     name: 'Main',
+    components: {
+        Post
+    },
 
     data() {
         return {
             posts:[],
-            currentPage: 1
+            currentPage: 1,
+            lastPage:null
         };
     },
 
@@ -43,7 +49,7 @@ export default {
             })
             .then((response) => {
                 this.currentPage = response.data.results.current_page;
-                this.posts = response.data.results.data;
+                this.posts = response.data.results;
                 this.lastPage = response.data.results.last_page;
             });
            
