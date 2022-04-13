@@ -12,7 +12,15 @@
 <script>
 export default {
     name:'Post',
-    props: ['title','content','slug','category','tags']
+    props: ['title','content','slug','category','tags'],
+
+    methods: {
+        truncateText(text) {
+
+            return text.substring(0, 50) + '...';
+
+        }
+    }
 
 }
 </script>
