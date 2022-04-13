@@ -3002,21 +3002,31 @@ var render = function () {
       _vm._l(_vm.posts, function (post) {
         return _c("div", { key: post.id, staticClass: "col-6" }, [
           _c("div", { staticClass: "card justify-content-center" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("h5", { staticClass: "card-title" }, [
-                _vm._v(_vm._s(post.title)),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(_vm._s(post.content)),
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                [_vm._v("Vedi articolo completo")]
-              ),
-            ]),
+            _c(
+              "div",
+              { staticClass: "card-body" },
+              [
+                _c("h5", { staticClass: "card-title" }, [
+                  _vm._v(_vm._s(post.title)),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(post.content)),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: {
+                      to: { name: "single-post", params: { slug: post.slug } },
+                    },
+                  },
+                  [_vm._v("Vedi articolo completo")]
+                ),
+              ],
+              1
+            ),
           ]),
         ])
       }),
