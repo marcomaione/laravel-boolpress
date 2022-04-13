@@ -6,7 +6,15 @@
 
 <script>
 export default {
-    name:'SinglePost'
+    name:'SinglePost',
+
+    mounted() {
+        const slug = this.$route.params.slug;
+        axios.get('/api/posts/'+ slug).then(response => {
+            console.log(response);
+
+        });
+    }
 
 }
 </script>

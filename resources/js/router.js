@@ -8,6 +8,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Posts from './pages/Posts';
 import SinglePost from './pages/SinglePost';
+import NotFound from './pages/NotFound';
 
 const router = new VueRouter({
 
@@ -38,6 +39,11 @@ const router = new VueRouter({
             path:'/posts/:slug',
             name:'single-post',
             component:SinglePost
+        },
+        {
+            path:'/*',
+            name:'not-found',
+            component:NotFound
         },
     ]
 
