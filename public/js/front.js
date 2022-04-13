@@ -2150,12 +2150,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SinglePost',
+  data: function data() {
+    return {
+      post: null
+    };
+  },
   mounted: function mounted() {
+    var _this = this;
+
     var slug = this.$route.params.slug;
     axios.get('/api/posts/' + slug).then(function (response) {
-      console.log(response);
+      if (response.data.success == false) {
+        _this.$router.push({
+          name: 'not-found'
+        });
+      } else {
+        _this.post = response.data.result;
+      }
     });
   }
 });
@@ -3064,7 +3094,37 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    " + _vm._s(_vm.$route.params.slug) + "\n")])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _vm.post
+          ? _c("div", [
+              _c("h1", [_vm._v(_vm._s(_vm.post.title))]),
+              _vm._v(" "),
+              _c("h2", [_vm._v("Categoria:" + _vm._s(_vm.post.category.name))]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.post.content))]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Tags:")]),
+              _vm._v(" "),
+              _c(
+                "ul",
+                _vm._l(_vm.post.tags, function (tag) {
+                  return _c("li", { key: tag.id }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(tag.name) +
+                        "\n                    "
+                    ),
+                  ])
+                }),
+                0
+              ),
+            ])
+          : _vm._e(),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
