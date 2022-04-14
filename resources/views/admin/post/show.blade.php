@@ -7,6 +7,7 @@
 
                 <h1>visualizza post</h1>
                 <div><strong>Titolo</strong>{{$post->title}}</div>
+                <div><img src="{{ asset('storage/' . $post->cover) }}"></div>
                 <div><strong>contenuto</strong>{{!!$post->content !!}}</div>
                 <div><strong>slug</strong>{{$post->slug}}</div>
                 <div><strong>Categoria</strong>{{$post->category->name}}</div>

@@ -51,7 +51,7 @@ class PostController extends Controller
                 'content'=> 'required|min:10',
                 'category_id'=>'nullable|exists:categories,id',
                 'tags'=>'nullable|exists:tags,id',
-                'image'=>'nullable|image|max:2048'//imposto il limite massimmo della grandezza del file che verrà caricato in kb//
+                'image'=>'nullable|mimes:jpg,jpeg,png|max:2048'//imposto il limite massimmo della grandezza del file che verrà caricato in kb//
                 
             ]
         );
