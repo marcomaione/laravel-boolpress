@@ -8,6 +8,7 @@ use App\Post;
 use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -49,12 +50,20 @@ class PostController extends Controller
                 'title'=>'required|min:5',
                 'content'=> 'required|min:10',
                 'category_id'=>'nullable|exists:categories,id',
-                'tags'=>'nullable|exists:tags,id'
+                'tags'=>'nullable|exists:tags,id',
+                'image'=>'nullable|image|max:2048'//imposto il limite massimmo della grandezza del file che verrà caricato in kb//
                 
             ]
         );
 
         $data = $request->all();
+
+
+        if(isset($data['image'])) {
+            $cover_path = Storage::put('post_covers', $data['image']);
+            $data['cover'] = $cover_path;
+        }
+
 
         $slug = Str::slug($data['title']);
 
