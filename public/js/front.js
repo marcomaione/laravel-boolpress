@@ -2007,9 +2007,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Post',
   props: ['title', 'content', 'slug', 'category', 'tags'],
-  methods: {
-    truncateText: function truncateText(text) {
-      return text.substring(0, 50) + '...';
+  computed: {
+    truncateText: function truncateText() {
+      return this.content.substring(0, 50) + '...';
     }
   }
 });
@@ -2906,7 +2906,9 @@ var render = function () {
           _vm._v(_vm._s(_vm.category.name)),
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.content))]),
+        _c("p", { staticClass: "card-text" }, [
+          _vm._v(_vm._s(_vm.truncateText)),
+        ]),
         _vm._v(" "),
         _c(
           "router-link",
