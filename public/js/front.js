@@ -2054,6 +2054,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Contact'
 });
@@ -2991,13 +2996,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", [_vm._v("contatti")]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat, distinctio aperiam perferendis numquam ab at odit rerum porro explicabo inventore quis, dolores praesentium minima. Sapiente et nesciunt repellat impedit sint!"
-        ),
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c("form", { attrs: { action: "" } }),
+        ]),
       ]),
     ])
   },
